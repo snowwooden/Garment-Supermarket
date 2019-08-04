@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TOrderMapper">
+	<select id="findTOrderList" 
+		resultType="TOrder">
+		select * from t_order 
+	</select>
+	
+	<select id="report"  resultType="TOrder">
+		  select  goods_id goodsId,sum(goods_quantity) nums,b.mingcheng from t_orderitem a left join t_goods b on a.goods_id=b.id  where a.goods_id in (select id from t_goods ) group by a.goods_id,mingcheng order by nums desc  limit 0,5
+	</select>
+	
+	
+	
+	<select id="query" parameterType="java.util.Map" resultType="TOrder">
+		select *,user_id userId from t_order  
+		<where>
+			<if test="id!=null and id!=0">
+			   and id= #{id}
+			</if>
+			<if test="userId!=null and userId!=''">
+			   and user_id= #{userId}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryTOrderById" parameterType="string" resultType="TOrder">
+		select *,user_id userId from t_order where id=${value}
+	</select>
+ 
+
+
+	<insert id="insertTOrder" useGeneratedKeys="true" keyProperty="id" parameterType="TOrder">
+		insert into t_order
+		(id,bianhao,shijian,zhuangtai,songhuodizhi,fukuanfangshi,jine,user_id,pjstate)
+		values
+		(#{id},#{bianhao},#{shijian},#{zhuangtai},#{songhuodizhi},#{fukuanfangshi},#{jine},#{userId},#{pjstate});
+	</insert>
+ 
+	
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+	<update id="updateTOrder" parameterType="TOrder" >
+		update t_order set
+		bianhao=#{bianhao},shijian=#{shijian},zhuangtai=#{zhuangtai},songhuodizhi=#{songhuodizhi},fukuanfangshi=#{fukuanfangshi},jine=#{jine},user_id=#{userId},kddh=#{kddh},pjstate=#{pjstate}
+		where
+		id=#{id}	
+	</update>
+	
+ 
+	
+	<delete id="deleteTOrder" parameterType="string">
+	    delete from  t_order where id=${value}
+	</delete>
+
+</mapper>
+
+ 

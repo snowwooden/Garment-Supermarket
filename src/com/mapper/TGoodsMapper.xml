@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TGoodsMapper">
+	<select id="findTGoodsList" 
+		resultType="TGoods">
+		select * from t_goods 
+	</select>
+	
+	<select id="paihang" 
+		resultType="TGoods">
+		
+		select sum(goods_quantity) xl,goods_id id from t_orderitem group by goods_id order by sum(goods_quantity) desc limit 0,7   
+	</select>
+	
+	
+	<select id="query" parameterType="java.util.Map" resultType="TGoods">
+		select * from t_goods  
+		<where>
+			<if test="id!=null and id!=0">
+			   and id= #{id}
+			</if>
+			 <if test="catelogId!=null and catelogId!=0">
+			   and catelogId= #{catelogId}
+			</if>
+			 <if test="mingcheng!=null and mingcheng!=''">
+			    and mingcheng like  '%${mingcheng}%'
+			</if>
+				 
+			
+		</where>
+		
+		 <if test="sorts=='JG'">
+			   order by shichangjia asc
+		</if>
+		 <if test="sorts=='VC'">
+			  order by viewcount desc
+		</if>
+		 <if test="sorts=='' || sorts==null">
+			  order by id desc
+		</if>
+		
+		
+	</select>
+	
+	
+	
+	
+		<select id="query1" parameterType="java.util.Map" resultType="TGoods">
+		select * from t_goods  
+		<where>
+			<if test="id!=null and id!=0">
+			   and id= #{id}
+			</if>
+			 <if test="catelogId!=null and catelogId!=0">
+			 
+			   and catelogId in ( select id from t_catelog where fid = #{catelogId}) 
+			  
+			</if>
+			 <if test="mingcheng!=null and mingcheng!=''">
+			    and mingcheng like  '%${mingcheng}%'
+			</if>
+				 
+			
+		</where>
+		
+		 <if test="sorts=='JG'">
+			   order by shichangjia asc
+		</if>
+		 <if test="sorts=='VC'">
+			  order by viewcount desc
+		</if>
+		 <if test="sorts=='' || sorts==null">
+			  order by id desc
+		</if>
+		
+		
+	</select>
+	
+	
+	
+	<select id="queryTGoodsById" parameterType="int" resultType="TGoods">
+		select * from t_goods where id=${value}
+	</select>
+ 
+
+
+	<insert id="insertTGoods" useGeneratedKeys="true" keyProperty="id" parameterType="TGoods">
+		insert into t_goods
+		(catelogId,nannvkuan,bianhao,mingcheng,jieshao,pinpai,fujian,shichangjia,kucun,chandi,gongsi,viewcount)
+		values
+		(#{catelogId},#{nannvkuan},#{bianhao},#{mingcheng},#{jieshao},#{pinpai},#{fujian},#{shichangjia},#{kucun},#{chandi},#{gongsi},#{viewcount});
+	</insert>
+ 
+ 
+	<update id="updateTGoods" parameterType="TGoods" >
+		update t_goods set
+		catelogId=#{catelogId},nannvkuan=#{nannvkuan},bianhao=#{bianhao},mingcheng=#{mingcheng},jieshao=#{jieshao},pinpai=#{pinpai},fujian=#{fujian},shichangjia=#{shichangjia},kucun=#{kucun},chandi=#{chandi},gongsi=#{gongsi},viewcount=#{viewcount}
+		where
+		id=#{id}	
+	</update>
+	
+ 
+	
+	<delete id="deleteTGoods" parameterType="int">
+	    delete from  t_goods where id=${value}
+	</delete>
+
+</mapper>
+
+ 

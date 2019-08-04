@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.PinglunMapper">
+	<select id="findPinglunList" 
+		resultType="Pinglun">
+		select * from pinglun 
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultType="Pinglun">
+		select a.*,b.mingcheng from pinglun a left join t_goods b on a.gid = b.id 
+		<where>
+			<if test="gid!=null and gid!=0">
+			   and gid= #{gid}
+			</if>
+			and ctype=0
+		</where>
+		order by a.id desc
+	</select>
+	
+	<select id="queryWz" parameterType="java.util.Map" resultType="Pinglun">
+		select a.*,b.title from pinglun a left join wenzhang b on a.gid = b.id 
+		<where>
+			<if test="gid!=null and gid!=0">
+			   and gid= #{gid}
+			</if>
+			and ctype=1
+		</where>
+		order by a.id desc
+	</select>
+	
+	
+	
+	<select id="queryPinglunById" parameterType="int" resultType="Pinglun">
+		select * from pinglun where id=${value}
+	</select>
+ 
+
+
+	<insert id="insertPinglun" useGeneratedKeys="true" keyProperty="id" parameterType="Pinglun">
+		insert into pinglun
+		(gid,plnr,plr,plsj,uid,replays,ctype)
+		values
+		(#{gid},#{plnr},#{plr},#{plsj},#{uid},#{replays},#{ctype});
+	</insert>
+ 
+	
+  
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+	<update id="updatePinglun" parameterType="Pinglun" >
+		update pinglun set
+		gid=#{gid},plnr=#{plnr},plr=#{plr},plsj=#{plsj},uid=#{uid},replays=#{replays},ctype=#{ctype}
+		where
+		id=#{id}	
+	</update>
+	
+ 
+	
+	<delete id="deletePinglun" parameterType="int">
+	    delete from  pinglun where id=${value}
+	</delete>
+
+</mapper>
+
+ 

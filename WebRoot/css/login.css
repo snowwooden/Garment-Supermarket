@@ -1,0 +1,74 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/***
+ * uimaker
+ * http://www.uimaker.com
+ * e-mail: admin@uimaker.com
+ */
+*{font-size:9pt;border:0;margin:0;padding:0;}
+body{font-family:'微软雅黑'; margin:0 auto;min-width:980px;}
+ul{display:block;margin:0;padding:0;list-style:none;}
+li{display:block;margin:0;padding:0;list-style: none;}
+img{border:0;}
+dl,dt,dd,span{margin:0;padding:0;display:block;}
+a,a:focus{text-decoration:none; color:#5c6780;outline:none;blr:expression(this.onFocus=this.blur());}
+a:hover{color:#EB5409;text-decoration:none;}
+table{border-collapse:collapse;border-spacing: 0;}
+cite{font-style:normal;}
+h2{font-weight:normal;}
+
+
+
+/*login*/
+.logintop{height:47px; position:absolute; top:0; background:url(../img/loginbg1.png) repeat-x;z-index:100; width:100%;}
+.logintop span{color:#fff; line-height:47px; background:url(../img/loginsj.png) no-repeat 21px 18px; text-indent:44px; color:#fff; float:left;}
+.logintop ul{float:right; padding-right:30px;}
+.logintop ul li{float:left; margin-left:20px; line-height:47px;}
+.logintop ul li a{color:#fff;}
+.logintop ul li a:hover{color:#fff;}
+.systemlogo{background:url(../img/loginlogo.png) no-repeat center;width:100%; height:71px; margin-top:75px;}
+.loginbox{width:692px; height:336px; background:url(../img/logininfo.png) no-repeat; margin-top:30px;}
+.loginbox ul{ margin-left:255px; padding-top:80px;}
+.loginbox ul li{margin-bottom:25px;}
+.loginbox ul li label{color:#fff; padding-left:25px;}
+.loginbox ul li label a{color:#fff;}
+.loginbox ul li label a:hover{color:#f0580c;}
+.loginbox ul li label input{margin-right:5px;}
+.loginbox{width:667px; height:330px; margin:30px auto 0 auto;}
+.loginuser{width:340px; height:42px; background:#fff url(../images/loginuser.png) no-repeat; border:none; line-height:42px; padding-left:44px; font-size:14px; color:#a0a7b7; border:1px solid #fff; border-radius:3px;}
+.loginpwd{width:340px; height:42px; background:#fff url(../images/loginpassword.png) no-repeat; border:none;line-height:42px; padding-left:44px; font-size:14px; color:#a0a7b7;border:1px solid #fff;border-radius:3px;}
+.loginbtn{width:111px;height:35px; background-color:#ea5a5a; font-size:14px; color:#fff;cursor:pointer; line-height:35px; border-radius:3px; color:#fff}
+.loginbm{height:50px; line-height:50px; text-align:center; background:url(../images/loginbg2.png) repeat-x;position:absolute; bottom:0; width:100%; color:#fff; z-index:9899}
+.loginbm a{font-weight:bold;color:#fff8f5;}
+.loginbm a:hover{color:#fff;}
+
+.loginbox1{background:url(../images/logininfo1.png) no-repeat;}
+.loginbox1 ul li{margin-bottom:16px;}
+.loginbox2{background:url(../images/logininfo2.png) no-repeat;}
+.loginbox2 ul li{margin-bottom:16px;}
+.loginbox3{background:url(../images/logininfo3.png) no-repeat;}
+.loginbox3 ul li{margin-bottom:16px;}
+.yzm{width:384px; height:46px; background:url(../images/yzmbg.png) no-repeat; padding-bottom:5px;}
+.yzm span{display:block; float:left;width:265px; height:46px;}
+.yzm span input{background:none; border:none; width:220px; height:42px; line-height:42px;padding-left:44px;font-size:14px; color:#a0a7b7;}
+.yzm cite {width:118px;display:inline-block}
+.yzm cite button{ line-height:42px; font-size:16px; color:#fff; text-align:center;width:118px;background:url(../img/lbg.png) no-repeat;}
+ #sends{width:120px;text-align:center;}
+.yzm cite{text-align:center;}
+.loginbody{background-size: 100% 100%;width: 100%;height: 100%;margin: 0;padding: 0;position: absolute;z-index: 999;}
+.systemlogo{width:100%; height:71px; margin-top:120px; text-align:center;}
+.loginbox0{width:810px;margin-top:0px;height:252px;}
+.loginlist{width:810px; overflow:hidden;}
+.loginlist{margin-top:110px;}
+.loginlist li{float:left; margin-left:3px; margin-right:3px;}
+.loginlist li a{ display:block;width:196px; height:252px; background:url(../img/lbg.png) no-repeat; text-align:center; padding-top:25px; cursor:pointer;}
+.loginlist li a:hover{background:url(../img/lbg1.png) no-repeat;}
+.loginlist li a p{font-size:16px; color:#fff; padding-top:10px;}
+
+.loginbox .text{transition:all .2s ease;}
+.loginbox .text:hover{box-shadow:2px 1px 2px #ddd inset;border:1px solid #f97b7b; border-radius:3px;}
+a.sj_dl{ background:url(../img/sj-icon.png) no-repeat; padding-left:18px;}
+a.login_yuyin{ background:url(../img/call.png) no-repeat; padding-left:18px;}
+a.login_zhanghao{ background:url(../img/zhanghao.png) no-repeat; padding-left:18px;}
+
+

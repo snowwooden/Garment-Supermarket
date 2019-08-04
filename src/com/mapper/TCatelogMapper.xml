@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TCatelogMapper">
+	<select id="findTCatelogList" 
+		resultType="TCatelog">
+		select * from t_catelog 
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultType="TCatelog">
+		select * from t_catelog  
+		<where>
+			<if test="id!=null and id!=0">
+			   and id= #{id}
+			</if>
+			<if test="fid!=null">
+			   and fid=#{fid}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryTCatelogById" parameterType="int" resultType="TCatelog">
+		select * from t_catelog where id=${value}
+	</select>
+ 
+
+
+	<insert id="insertTCatelog" useGeneratedKeys="true" keyProperty="id" parameterType="TCatelog">
+		insert into t_catelog
+		(name,fid,del)
+		values
+		(#{name},#{fid},#{del});
+	</insert>
+ 
+	
+  
+ 
+ 
+ 
+
+
+
+	<update id="updateTCatelog" parameterType="TCatelog" >
+		update t_catelog set
+		name=#{name},fid=#{fid},del=#{del}
+		where
+		id=#{id}	
+	</update>
+	
+ 
+	
+	<delete id="deleteTCatelog" parameterType="int">
+	    delete from  t_catelog where id=${value}
+	</delete>
+
+</mapper>
+
+ 

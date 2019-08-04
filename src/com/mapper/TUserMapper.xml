@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TUserMapper">
+	<select id="findTUserList" 
+		resultType="TUser">
+		select * from t_user 
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultType="TUser">
+		select * from t_user  
+		<where>
+			<if test="id!=null and id!=''">
+			   and id= #{id}
+			</if>
+				<if test="loginname!=null and loginname!=''">
+			   and loginname= #{loginname}
+			</if>
+				<if test="loginpw!=null and loginpw!=''">
+			   and loginpw= #{loginpw}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="queryTUserById" parameterType="string" resultType="TUser">
+		select * from t_user where id=${value}
+	</select>
+ 
+
+
+	<insert id="insertTUser" useGeneratedKeys="true" keyProperty="id" parameterType="TUser">
+		insert into t_user
+		(id,loginname,loginpw,name,sex,age,address,tel,email,qq,del,vip)
+		values
+		(#{id},#{loginname},#{loginpw},#{name},#{sex},#{age},#{address},#{tel},#{email},#{qq},#{del},#{vip});
+	</insert>
+ 
+	<update id="updateTUser" parameterType="TUser" >
+		update t_user set
+		loginname=#{loginname},loginpw=#{loginpw},name=#{name},sex=#{sex},age=#{age},address=#{address},tel=#{tel},email=#{email},qq=#{qq},del=#{del},vip=#{vip}
+		where
+		id=#{id}	
+	</update>
+	
+ 
+	
+	<delete id="deleteTUser" parameterType="string">
+	    delete from  t_user where id=${value}
+	</delete>
+
+</mapper>
+
+ 

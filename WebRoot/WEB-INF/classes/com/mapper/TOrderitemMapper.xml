@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.TOrderitemMapper">
+	<select id="findTOrderitemList" 
+		resultType="TOrderitem">
+		select * from t_orderitem 
+	</select>
+	
+	<select id="query" parameterType="java.util.Map" resultType="TOrderitem">
+		select id,order_id orderId,goods_id goodsId,goods_quantity goodsQuantity from t_orderitem  
+		<where>
+			<if test="id!=null and id!=0">
+			   and id= #{id}
+			</if>
+			<if test="orderId!=null and orderId!=''">
+			   and order_id= #{orderId}
+			</if>
+			
+		</where>
+	</select>
+	
+	
+	<select id="queryTOrderitemById" parameterType="int" resultType="TOrderitem">
+		select * from t_orderitem where id=${value}
+	</select>
+ 
+
+
+	<insert id="insertTOrderitem" useGeneratedKeys="true" keyProperty="id" parameterType="TOrderitem">
+		insert into t_orderitem
+		(id,order_id,goods_id,goods_quantity)
+		values
+		(#{id},#{orderId},#{goodsId},#{goodsQuantity});
+	</insert>
+ 
+	
+  
+ 
+ 
+ 
+
+
+
+	<update id="updateTOrderitem" parameterType="TOrderitem" >
+		update t_orderitem set
+		order_id=#{orderId},goods_id=#{goodsId},goods_quantity=#{goodsQuantity}
+		where
+		id=#{id}	
+	</update>
+	
+ 
+	
+	<delete id="deleteTOrderitem" parameterType="int">
+	    delete from  t_orderitem where id=${value}
+	</delete>
+
+</mapper>
+
+ 
